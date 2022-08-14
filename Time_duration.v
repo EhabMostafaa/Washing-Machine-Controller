@@ -1,11 +1,15 @@
-module timer_machinec(
+module timer_machinec#(parameter FILLING_COUNT_TM=29'd120000000,
+                       parameter WASHING_COUNT_TM=29'd300000000,
+                       parameter RINSING_COUNT_TM=29'd120000000,
+                       parameter SPINNING_COUNT_TM=29'd60000000)
+(
   input     wire  [3:0]    clock_frequency_tm,
   input     wire  [2:0]    state_tm,
        
-  output    reg   [28:0]   filling_count_tm,
-  output    reg   [28:0]   washing_count_tm,
-  output    reg   [28:0]   rinsing_count_tm,
-  output    reg   [28:0]   spinning_count_tm);
+  output    reg   [31:0]   filling_count_tm,
+  output    reg   [31:0]   washing_count_tm,
+  output    reg   [31:0]   rinsing_count_tm,
+  output    reg   [31:0]   spinning_count_tm);
   
   
   
@@ -22,7 +26,7 @@ always@(*)
                            end
            
                  3'b001: begin           //filling water
-                             filling_count_tm='d120000000;
+                             filling_count_tm=FILLING_COUNT_TM;
                              washing_count_tm='b0;
                              rinsing_count_tm='b0;
                              spinning_count_tm='b0;
@@ -30,7 +34,7 @@ always@(*)
           
                  3'b010: begin           //washing
                              filling_count_tm='b0;
-                             washing_count_tm='d300000000;
+                             washing_count_tm=WASHING_COUNT_TM;
                              rinsing_count_tm='b0;
                              spinning_count_tm='b0;
                            end
@@ -38,7 +42,7 @@ always@(*)
                  3'b011: begin           //Rinsing
                              filling_count_tm='b0;
                              washing_count_tm='b0;
-                             rinsing_count_tm='d120000000;
+                             rinsing_count_tm=RINSING_COUNT_TM;
                              spinning_count_tm='b0;
                            end
                  
@@ -46,8 +50,14 @@ always@(*)
                              filling_count_tm='b0;
                              washing_count_tm='b0;
                              rinsing_count_tm='b0;
-                             spinning_count_tm='d60000000;
+                             spinning_count_tm=SPINNING_COUNT_TM;
                            end
+                 default:begin
+                            filling_count_tm='b0;
+                             washing_count_tm='b0;
+                             rinsing_count_tm='b0;
+                             spinning_count_tm='b0;
+                           end          
                          endcase
                        end
     ///////////////////////////////////                   
@@ -61,7 +71,7 @@ always@(*)
                            end
            
                  3'b001: begin           //filling water
-                             filling_count_tm='d120000000*2;
+                             filling_count_tm=FILLING_COUNT_TM*2;
                              washing_count_tm='b0;
                              rinsing_count_tm='b0;
                              spinning_count_tm='b0;
@@ -69,7 +79,7 @@ always@(*)
           
                  3'b010: begin           //washing
                              filling_count_tm='b0;
-                             washing_count_tm='d300000000*2;
+                             washing_count_tm=WASHING_COUNT_TM*2;
                              rinsing_count_tm='b0;
                              spinning_count_tm='b0;
                            end
@@ -77,7 +87,7 @@ always@(*)
                  3'b011: begin           //Rinsing
                              filling_count_tm='b0;
                              washing_count_tm='b0;
-                             rinsing_count_tm='d120000000*2;
+                             rinsing_count_tm=RINSING_COUNT_TM*2;
                              spinning_count_tm='b0;
                            end
                  
@@ -85,8 +95,14 @@ always@(*)
                              filling_count_tm='b0;
                              washing_count_tm='b0;
                              rinsing_count_tm='b0;
-                             spinning_count_tm='d60000000*2;
+                             spinning_count_tm=SPINNING_COUNT_TM*2;
                            end
+                 default:begin
+                            filling_count_tm='b0;
+                             washing_count_tm='b0;
+                             rinsing_count_tm='b0;
+                             spinning_count_tm='b0;
+                           end          
                          endcase
                        end
              /////////////////////////////
@@ -100,7 +116,7 @@ always@(*)
                            end
            
                  3'b001: begin           //filling water
-                             filling_count_tm='d120000000*4;
+                             filling_count_tm=FILLING_COUNT_TM*4;
                              washing_count_tm='b0;
                              rinsing_count_tm='b0;
                              spinning_count_tm='b0;
@@ -108,7 +124,7 @@ always@(*)
           
                  3'b010: begin           //washing
                              filling_count_tm='b0;
-                             washing_count_tm='d300000000*4;
+                             washing_count_tm=WASHING_COUNT_TM*4;
                              rinsing_count_tm='b0;
                              spinning_count_tm='b0;
                            end
@@ -116,7 +132,7 @@ always@(*)
                  3'b011: begin           //Rinsing
                              filling_count_tm='b0;
                              washing_count_tm='b0;
-                             rinsing_count_tm='d120000000*4;
+                             rinsing_count_tm=RINSING_COUNT_TM*4;
                              spinning_count_tm='b0;
                            end
                  
@@ -124,7 +140,13 @@ always@(*)
                              filling_count_tm='b0;
                              washing_count_tm='b0;
                              rinsing_count_tm='b0;
-                             spinning_count_tm='d60000000*4;
+                             spinning_count_tm=SPINNING_COUNT_TM*4;
+                           end
+                 default:begin
+                             filling_count_tm='b0;
+                             washing_count_tm='b0;
+                             rinsing_count_tm='b0;
+                             spinning_count_tm='b0;
                            end
                          endcase
                        end
@@ -139,7 +161,7 @@ always@(*)
                            end
            
                  3'b001: begin           //filling water
-                             filling_count_tm='d120000000*8;
+                             filling_count_tm=FILLING_COUNT_TM*8;
                              washing_count_tm='b0;
                              rinsing_count_tm='b0;
                              spinning_count_tm='b0;
@@ -147,7 +169,7 @@ always@(*)
           
                  3'b010: begin           //washing
                              filling_count_tm='b0;
-                             washing_count_tm='d300000000*8;
+                             washing_count_tm=WASHING_COUNT_TM*8;
                              rinsing_count_tm='b0;
                              spinning_count_tm='b0;
                            end
@@ -155,7 +177,7 @@ always@(*)
                  3'b011: begin           //Rinsing
                              filling_count_tm='b0;
                              washing_count_tm='b0;
-                             rinsing_count_tm='d120000000*8;
+                             rinsing_count_tm=RINSING_COUNT_TM*8;
                              spinning_count_tm='b0;
                            end
                  
@@ -163,7 +185,13 @@ always@(*)
                              filling_count_tm='b0;
                              washing_count_tm='b0;
                              rinsing_count_tm='b0;
-                             spinning_count_tm='d60000000*8;
+                             spinning_count_tm=SPINNING_COUNT_TM*8;
+                           end
+                 default:begin
+                            filling_count_tm='b0;
+                             washing_count_tm='b0;
+                             rinsing_count_tm='b0;
+                             spinning_count_tm='b0;
                            end
                          endcase
                        end

@@ -1,13 +1,16 @@
-module clk_freq_decoder (
+`timescale 1ns/1ns
+
+module clk_freq_decoder#(parameter  FIRST_FREQ =1,
+                         parameter  SECOND_FREQ=2,
+                         parameter  THIRD_FREQ =4,
+                         parameter  FOURTH_FREQ=8)
+ (
 input     wire    [1:0]    clk_freq_dec,
 output    reg     [3:0]    clock_frequency_dec,
 output    reg              clk_gen);
 
 
-parameter  FIRST_FREQ =1;
-parameter  SECOND_FREQ=2;
-parameter  THIRD_FREQ =4;
-parameter  FOURTH_FREQ=8;
+
 real       clk_per;
 real       clk_half;
 
