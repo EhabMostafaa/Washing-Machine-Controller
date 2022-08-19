@@ -11,30 +11,30 @@ output    reg              clk_gen);
 
 
 
-real       clk_per;
-real       clk_half;
+real        clk_per;
+real        clk_half;
 
 always@(*)
   begin
     case(clk_freq_dec)
       2'b00:begin
                 clock_frequency_dec=FIRST_FREQ ;
-                clk_per =(1.0*(10^3))/(FIRST_FREQ);
+                clk_per =(1.0*(1000))/(clock_frequency_dec);
                 clk_half=clk_per/2;
            end   
       2'b01:begin
                 clock_frequency_dec=SECOND_FREQ ;
-                clk_per =(1.0*(10^3))/(SECOND_FREQ);
+                clk_per =(1.0*(1000))/(clock_frequency_dec);
                 clk_half=clk_per/2;
            end
       2'b10:begin
                 clock_frequency_dec=THIRD_FREQ ;
-                clk_per =(1.0*(10^3))/(THIRD_FREQ);
+                clk_per =(1.0*(1000))/(clock_frequency_dec);
                 clk_half=clk_per/2;
            end
       2'b11:begin
                 clock_frequency_dec=FOURTH_FREQ ;
-                clk_per =(1.0*(10^3))/FOURTH_FREQ;
+                clk_per =(1.0*(1000))/(clock_frequency_dec);
                 clk_half=clk_per/2;
            end
     endcase

@@ -13,7 +13,7 @@ module Top_Washing_machine#(parameter  FILLING_COUNT_TOP=32'd120000000,
     input     wire             pause,
     input     wire    [1:0]    clk_freq_dec_top,
     
-    output    reg             clk_top,
+    output                     clk_top,
     output    reg     [2:0]    current_state,
     output    reg              wash_done
          );
