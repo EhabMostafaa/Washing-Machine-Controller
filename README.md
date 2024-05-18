@@ -1,0 +1,1 @@
+Design a washing machine controller which serval states such as IDLE, Filling, Washing, Rinsing and spinning and there are different modules such as clock generator with different frequencies and time duration of each state. 
